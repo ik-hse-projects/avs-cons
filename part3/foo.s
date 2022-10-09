@@ -15,6 +15,7 @@ timespecDiff:
 .LFB6:
 	push	rbp
 	mov	rbp, rsp
+
 	mov	rax, rsi
 	mov	r8, rdi
 	mov	rsi, r8
@@ -55,7 +56,8 @@ main:
 	sub	rsp, 96                  # \
 
 	mov	DWORD PTR -84[rbp], edi  # / Аргументы на стек
-	mov	QWORD PTR -96[rbp], rsi  # |
+	mov	QWORD PTR -96[rbp], rsi  # | (argc, argv)
+
 	cmp	DWORD PTR -84[rbp], 2    # if rbp[-82] != 2
 	jne	.L4                      # then goto return 1;
 

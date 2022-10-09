@@ -4,7 +4,10 @@
 
 const int THRESHOLD = RAND_MAX - 10;
 
-int64_t timespecDiff(struct timespec timeA, struct timespec timeB)
+int64_t timespecDiff(
+    struct timespec timeA,  // { tv_sec, tv_nsec }
+    struct timespec timeB   // { tv_sec, tv_nsec }
+)
 {
     int64_t nsecA, nsecB;
 
@@ -25,7 +28,8 @@ int main(int argc, char** argv) {
     char* arg;
     int seed;
     int n;
-    struct timespec start, end;
+    struct timespec start;
+    struct timespec end;
     int64_t elapsed_ns;
 
     if (argc == 2) {         // [foo.exe, seed]

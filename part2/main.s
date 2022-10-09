@@ -30,13 +30,12 @@ main:
     lea	rdi, .LC1[rip]           # rdi := rip[.LC1] — строчка "input.txt"
 	lea	rsi, .LC0[rip]           # rsi := rip[.LC0] — строчка "r"
 	call	fopen@PLT
-
     mov	QWORD PTR -24[rbp], rax  # rbp[-24] := rax — сохраняем `FILE* input` на стек
+
 	mov	rdi, QWORD PTR -24[rbp]  # rdi := rbp[-24]
 	lea	rsi, .LC2[rip]           # rsi := rip[.LC2] — строчка "%d"
 	lea	rdx, -32[rbp]            # rdx := &rbp[-32]
-	mov	eax, 0
-	call	__isoc99_fscanf@PLT  # scanf(input, "%d", &n)
+	call	__isoc99_fscanf@PLT  # fscanf(input, "%d", &n)
 
     mov	edi, DWORD PTR -32[rbp]  # edi := rbp[-32] — загружвем `int n` из стека в аргументы
 	call	fill_array@PLT       # fill_array(n)
